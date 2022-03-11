@@ -21,7 +21,7 @@ export default function SearchPage(props) {
       const path = url.search;
       if (path.indexOf("?p=") !== -1) {
          axios
-            .get(path)
+            .get(process.env.REACT_APP_SERVER + path)
             .then((r) => {
                console.log(r.data);
                setData(r.data.list);
@@ -59,7 +59,7 @@ export default function SearchPage(props) {
    const createNewZoomChat = useCallback(async (uid) => {
       const data = (
          await axios.get(
-            `/search/searchzoom?fi=${uid}&cui=${dataController.user.uid}`
+            `${process.env.REACT_APP_SERVER}/search/searchzoom?fi=${uid}&cui=${dataController.user.uid}`
          )
       ).data;
       if (data.exits) {

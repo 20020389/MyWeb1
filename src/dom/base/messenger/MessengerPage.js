@@ -33,7 +33,7 @@ export default function MessengerPage({
 
    useEffect(() => {
       mount.current = true;
-      axios.get("/emojis/emoji.json").then((res) => {
+      axios.get(`${process.env.REACT_APP_SERVER}/emojis/emoji.json`).then((res) => {
          const data = res.data.results;
          setListEmoji(data)
       });
@@ -150,7 +150,7 @@ export default function MessengerPage({
          //nếu zoom chat k tồn tại tạo 1 fakezoom
          if (param.user) {
             axios
-               .post("/messenger/getfakezoom", {
+               .post(`${process.env.REACT_APP_SERVER}/messenger/getfakezoom`, {
                   zoomid: param.zoomchat,
                   friendid: param.user,
                   currentuser: appController.user,

@@ -26,7 +26,7 @@ export default function AppController({ login, app }) {
             if (currentUser.emailVerified) {
                setLoading((prev) => (prev = true));
                setVerified((prev) => (prev = true));
-               axios.get(`/getdata/user?uid=${currentUser.uid}`).then((res) => {
+               axios.get(`${process.env.REACT_APP_SERVER}/getdata/user?uid=${currentUser.uid}`).then((res) => {
                   setUser(currentUser);
                   setUserData(res.data.userdata);
                   setLoading(false);

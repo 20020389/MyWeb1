@@ -28,10 +28,14 @@ const ProfilePage = ({ user = { uid: undefined } }) => {
    useEffect(() => {
       console.log(param);
       if (param.useruid) {
-         axios.get(`/getdata/user?uid=${param.useruid}`).then((r) => {
-            console.log(r);
-            setUserData(r.data.userdata);
-         });
+         axios
+            .get(
+               `${process.env.REACT_APP_SERVER}/getdata/user?uid=${param.useruid}`
+            )
+            .then((r) => {
+               console.log(r);
+               setUserData(r.data.userdata);
+            });
       }
       if (param.useruid === user.uid) {
          setAdmin(true);
@@ -117,7 +121,7 @@ const ProfilePage = ({ user = { uid: undefined } }) => {
                                        transition: {
                                           delay: 0.3,
                                           duration: 0.3,
-                                       }
+                                       },
                                     }}
                                     exit={{
                                        opacity: 0,

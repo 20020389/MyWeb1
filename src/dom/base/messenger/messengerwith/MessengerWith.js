@@ -195,7 +195,7 @@ export default function MessengerWith({
 
    useEffect(() => {
       if (!zoomdata.seen) {
-         axios.post(`/messenger/setseen`, {
+         axios.post(`${process.env.REACT_APP_SERVER}/messenger/setseen`, {
             id: zoomdata.id,
             user: currentUser.uid,
          });
@@ -252,7 +252,7 @@ export default function MessengerWith({
          unListen();
          unListenTyping();
          if (!fakezoom) {
-            axios.post("/messenger/settyping", {
+            axios.post(`${process.env.REACT_APP_SERVER}/messenger/settyping`, {
                id: zoomdata.id,
                user: currentUser.uid,
                typing: false,
@@ -289,7 +289,7 @@ export default function MessengerWith({
                   list[index].emoticon = "love";
                }
                axios
-                  .post("/messenger/emoticonupdate", {
+                  .post(`${process.env.REACT_APP_SERVER}/messenger/emoticonupdate`, {
                      data: list,
                      zoomid: zoomdata.id,
                   })
@@ -319,7 +319,7 @@ export default function MessengerWith({
                   }
                }
                axios
-                  .post("/messenger/emoticonupdate", {
+                  .post(`${process.env.REACT_APP_SERVER}/messenger/emoticonupdate`, {
                      data: list,
                      zoomid: zoomdata.id,
                   })
@@ -347,7 +347,7 @@ export default function MessengerWith({
                   list[index].emoticon = "wow";
                }
                axios
-                  .post("/messenger/emoticonupdate", {
+                  .post(`${process.env.REACT_APP_SERVER}/messenger/emoticonupdate`, {
                      data: list,
                      zoomid: zoomdata.id,
                   })
@@ -375,7 +375,7 @@ export default function MessengerWith({
                   list[index].emoticon = "sad";
                }
                axios
-                  .post("/messenger/emoticonupdate", {
+                  .post(`${process.env.REACT_APP_SERVER}/messenger/emoticonupdate`, {
                      data: list,
                      zoomid: zoomdata.id,
                   })
@@ -403,7 +403,7 @@ export default function MessengerWith({
                   list[index].emoticon = "hate";
                }
                axios
-                  .post("/messenger/emoticonupdate", {
+                  .post(`${process.env.REACT_APP_SERVER}/messenger/emoticonupdate`, {
                      data: list,
                      zoomid: zoomdata.id,
                   })
@@ -431,7 +431,7 @@ export default function MessengerWith({
                   list[index].emoticon = "like";
                }
                axios
-                  .post("/messenger/emoticonupdate", {
+                  .post(`${process.env.REACT_APP_SERVER}/messenger/emoticonupdate`, {
                      data: list,
                      zoomid: zoomdata.id,
                   })
@@ -774,7 +774,7 @@ export default function MessengerWith({
          ele.innerHTML = `&#x${emojiList[i].unicode};`;
          ele.onclick = (e) => {
             if (chatBox.current.value.length === 0 && !fakezoom) {
-               axios.post("/messenger/settyping", {
+               axios.post(`${process.env.REACT_APP_SERVER}/messenger/settyping`, {
                   id: zoomdata.id,
                   user: currentUser.uid,
                   typing: true,
@@ -813,7 +813,7 @@ export default function MessengerWith({
       const index = listTyping.indexOf(currentUser.uid);
       if (index !== -1 && e.target.value.length === 0) {
          axios
-            .post("/messenger/settyping", {
+            .post(`${process.env.REACT_APP_SERVER}/messenger/settyping`, {
                id: zoomdata.id,
                user: currentUser.uid,
                typing: false,
@@ -821,7 +821,7 @@ export default function MessengerWith({
             .then((r) => {});
       } else if (index === -1 && e.target.value.length > 0) {
          axios
-            .post("/messenger/settyping", {
+            .post(`${process.env.REACT_APP_SERVER}/messenger/settyping`, {
                id: zoomdata.id,
                user: currentUser.uid,
                typing: true,
@@ -1001,7 +1001,7 @@ export default function MessengerWith({
                            }
                            if (!fakezoom) {
                               axios
-                                 .post("/messenger/send", formData)
+                                 .post(`${process.env.REACT_APP_SERVER}/messenger/send`, formData)
                                  .then((r) => {
                                     if (mount.current) {
                                        setSending(false);
@@ -1010,7 +1010,7 @@ export default function MessengerWith({
                            } else {
                               console.log("chat in fakezoom!");
                               axios
-                                 .post("/messenger/createzoom", formData)
+                                 .post(`${process.env.REACT_APP_SERVER}/messenger/createzoom`, formData)
                                  .then((r) => {
                                     if (mount.current) {
                                        setSending(false);
@@ -1065,7 +1065,7 @@ export default function MessengerWith({
                      formData.set("type", "image");
                   }
                   if (!fakezoom) {
-                     axios.post("/messenger/send", formData).then((r) => {
+                     axios.post(`${process.env.REACT_APP_SERVER}/messenger/send`, formData).then((r) => {
                         if (mount.current) {
                            base.scrollTop = base.scrollHeight;
                            chatBox.current.value = "";
@@ -1078,7 +1078,7 @@ export default function MessengerWith({
                      });
                   } else {
                      console.log("chat in fakezoom!");
-                     axios.post("/messenger/createzoom", formData).then((r) => {
+                     axios.post(`${process.env.REACT_APP_SERVER}/messenger/createzoom`, formData).then((r) => {
                         if (mount.current) {
                            base.scrollTop = base.scrollHeight;
                            chatBox.current.value = "";
