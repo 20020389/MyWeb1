@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.loadding-base{
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.body-base{
+   display: flex;
+   width: 100vw;
+   min-height: 90vh;
+}
+
+//css for all
+
+.bt{
+   border: none;
+   background-color: transparent;
+   display: flex;
+   align-items: center;
+}
+
+.scroll{
+   &-y::-webkit-scrollbar{
+      appearance: none;
+      width: 8px;
+
+      &-thumb{
+         background-color: var(--scrollbar-color);
+         border-radius: 10px;
+      }
+   }
+}

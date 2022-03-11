@@ -1,0 +1,376 @@
+:root{
+   --app-fontsize: 20px;
+   --topbar-height: 50px;
+   --topbar-padding: 0px 30px;
+   --app-font: 'Quicksand', sans-serif;
+   --leftbar-fontsize: 17px;
+   --leftbar-font: 'Lato', sans-serief;
+   --leftbar-width: 200px;
+
+   @media screen and (max-width: 1000px) {
+      --leftbar-width: 60px;
+   }
+
+   @media screen and (max-width: 500px) {
+      --app-fontsize: 16px;
+      --topbar-height: 40px;
+      --topbar-padding: 0px 15px;
+      --leftbar-fontsize: 14px;
+      --leftbar-width: 0px;
+   }
+}
+
+:root{
+   --scrollbar-color: rgb(199, 199, 199);
+   --app-text-color: #274c77;
+   --topbar-bg-color: #f8f8fb;
+   --app-bg-color: #dde4e8;
+   --searchbox-color: #eceaf3;
+   --avatar-bordercolor: #6c757d5e;
+   --leftbar-activebg-color: #274c77;
+   --leftbar-hoverbg-color: #274c7713;
+   --leftbar-activetext-color: #e7ecef;
+   --leftbar-hovertext-color: #274c77;
+
+   @media screen and (max-width: 500px) {
+      --leftbar-hovertext-color: #e7ecef;
+   }
+}
+
+:root.dark{
+   --scrollbar-color: gray;
+   --app-text-color: #f8f8fb;
+   --topbar-bg-color: #181919;
+   --app-bg-color: #242526;
+   --searchbox-color: #3a3c3c;
+   --avatar-bordercolor: rgba(255, 255, 255, 0.4);
+   --leftbar-activebg-color: #f8f8fb;
+   --leftbar-hoverbg-color: rgba(255, 255, 255, 0.2);
+   --leftbar-activetext-color: black;
+   --leftbar-hovertext-color: white;
+}
+
+.ant-badge.messenger-badge{
+   color: unset;
+}
+
+.topbar{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: var(--topbar-height);
+   background-color: var(--topbar-bg-color);
+   font-size: var(--app-fontsize);
+   padding: var(--topbar-padding);
+   transition-property: background-color;
+   transition-duration: .3s;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   z-index: 10;
+
+   &__left{
+
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      &__logo{
+         font-family: 'Mochiy Pop P One';
+         font-size: 0.9em;
+         color: var(--app-text-color);
+         cursor: pointer;
+   
+         & > span{
+            color: #d62f60;
+         }
+      }
+
+      & > .searchbox{
+         margin-left: 10px;
+      }
+
+      &__showmenu{
+         position: relative;
+         min-width: 30px;
+         min-height: 30px;
+         background-color: transparent;
+         color: var(--app-text-color);
+         font-size: calc(var(--app-fontsize) + 2px);
+         border: none;
+         display: flex;
+         align-items: center;
+         
+         & > span{
+            width: 100%;
+
+            &.ant-badge > ion-icon{
+               color: var(--app-text-color);
+            }
+         }
+
+         & > input[type=checkbox]{
+            position: absolute;
+            left: 0;
+            top: 0;
+            appearance: none;
+            min-width: 30px;
+            min-height: 30px;
+            cursor: pointer;
+         }
+      }
+   }
+
+   &__right{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 0.8em;
+      font-family: var(--app-font);
+      font-weight: 700;
+
+      color: var(--app-text-color);
+
+      & > span:not(.ant-badge){
+         max-width: 250px;
+         text-overflow: ellipsis;
+         overflow: hidden;
+         white-space: nowrap; 
+      }
+
+      &__notify{
+
+         & > button{
+            border: none;
+            background-color: transparent;
+            border-radius: 20px;
+            color: var(--leftbar-activebg-color);
+            display: flex;
+            transform: rotateZ(-15deg);
+         }
+      }
+
+      &__avatar{
+         & > svg > circle{
+            stroke: var(--avatar-bordercolor);
+         }
+      }
+
+      @media screen and (max-width: 1000px) {
+         width: min-content;
+
+         & > span:not(.ant-badge){
+            display: none;
+         }
+      }
+   }
+}
+
+.searchbox {
+   font-size: calc(var(--app-fontsize) - 3px);
+   background-color: var(--searchbox-color);
+   color: var(--app-text-color);
+   padding: 5px 10px;
+   display: flex;
+   align-items: center;
+
+   gap: 10px;
+   border-radius: 7px;
+
+   & > label{
+      display: flex;
+      align-items: center;
+      font-size: var(--app-fontsize);
+   }
+
+   & > input{
+      width: 150px;
+
+      background-color: transparent;
+      border: none;
+      outline: none !important;
+      font-family: var(--app-font);
+      font-weight: 600;
+      color: var(--app-text-color);
+      transition: 0.5s;
+   }
+
+   &--fixed{
+      transition: 0.5s;
+      position: fixed;
+      top: calc(var(--topbar-height) + 10px);
+      left: -220px;
+
+      &.show{
+         left: 20px;
+         box-shadow: 0 0 10px rgba($color: #000000, $alpha: .3);
+      }
+   }
+
+   &:nth-of-type(1) {
+      @media screen and (max-width: 500px) {
+         padding: 0;
+   
+         & > label{
+            padding: 5px 10px;
+         }
+      }
+   }
+}
+
+
+.leftbar{
+   position: fixed;
+   z-index: 9;
+   top: var(--topbar-height);
+   left: 0;
+   height: calc(100vh - var(--topbar-height));
+   width: var(--leftbar-width);
+   font-family: var(--leftbar-font);
+   font-size: var(--leftbar-fontsize);
+   font-weight: 600;
+   color: var(--app-text-color);
+   background-color: var(--searchbox-color);
+
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
+   box-sizing: border-box;
+   padding-top: 50px;
+   padding-bottom: 30px;
+
+   overflow-x: hidden;
+
+   &__list{
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      
+      &__item{
+         text-decoration: none;
+         color: var(--app-text-color);
+         border-radius: 0 12px 12px 0;
+         transition: 0s !important;
+
+         &.active{
+            background-color: var(--leftbar-activebg-color);
+            color: var(--leftbar-activetext-color);
+         }
+
+         &:not(.active):hover{
+            background-color: var(--leftbar-hoverbg-color);
+            color: var(--leftbar-hovertext-color);
+         }
+
+         & > div{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+   
+            width: 200px;
+            height: 40px;
+            box-sizing: border-box;
+            padding-left: 30px;
+            gap: 13px;
+   
+            & > div, .messenger-badge{
+               width: var(--leftbar-fontsize);
+               height: var(--leftbar-fontsize);
+               font-size: var(--leftbar-fontsize);
+               display: flex;
+               align-items: center;
+   
+               & > ion-icon{
+                  --ionicon-stroke-width: 50px;
+               }
+            }
+
+            & > span:not(.ant-badge){
+               display: inline-block;
+               height: 20px;
+               line-height: 20px;
+               transition: 0.3s;
+               user-select: none;
+            }
+
+            @media screen and (max-width: 1000px) {
+               padding-left: 20px;
+               & > span:not(.ant-badge){
+                  opacity: 0;
+                  visibility: hidden;
+               }
+            }
+            @media screen and (max-width: 500px) {
+                  padding-left: 30px; 
+                  & > span:not(.ant-badge){
+                     opacity: 1;
+                     visibility: unset;
+                     line-height: 22px;
+                  }
+               }
+            }
+      }
+   }
+
+   &__after{
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+   }
+
+   @media screen and (max-width: 500px) {
+      left: -200px;
+      transition: 0.4s;
+      overflow: unset;
+      z-index: 11;             //leftbar will show before topbar(z-index:10)
+      width: 200px;
+      background-color: unset;
+
+      &__list__item{
+         color: whitesmoke;
+      }
+
+      &__after{
+         content: "";
+         position: absolute;
+         top: -100px;
+         left: 0;
+         width: 200vw;
+         height: 200vh;
+         background-color: rgba($color: #000000, $alpha: 0.8);
+         display: block;
+         transition: 0.4s;
+      }
+
+      &.show{
+         left: 0;
+
+         & .leftbar__list__item:not(.active){
+            &:hover{
+               background-color: rgba($color: #ffff, $alpha: 0.3);
+               color: var(--leftbar-hovertext-color);
+            }
+         }
+
+         & .leftbar__after{
+            display: block;
+            z-index: -1;
+            visibility: unset;
+            opacity: 1;
+         }
+      }
+   }
+}
+
+.messenger__listuser__list > .ant-spin-nested-loading > .ant-spin-container::after{
+   background: transparent;
+}

@@ -1,0 +1,155 @@
+:root{
+   --app-base-width: calc(100vw - var(--leftbar-width));
+   --app-base-height: calc(100vh - var(--topbar-height));
+   --messenger-userlist-width: 250px;
+   --messenger-userlist-padding: 50px 20px;
+   --messenger-userlist-list-padding: 20px 15px;
+   --messenger-userlist-boxshadow: rgba(39, 76, 119, 0.16);
+   --messenger-active-zoom: rgba(39, 76, 119, 0.16);
+   --messenger-hove-zoom: rgba(39, 76, 119, 0.09);
+   --messenger-text-color: #516F91;
+   --messenger-item-hrcolor: rgba(81, 111, 145, 0);
+   --messenger-item-padding: 1px 0;
+
+   &.dark{
+      // --messenger-userlist-boxshadow: rgba(255, 255, 255, 0.16);
+      --messenger-userlist-boxshadow: transparent;
+      --messenger-text-color: white;
+      --messenger-active-zoom: rgba(255, 255, 255, 0.16);
+   }
+
+   @media screen and (max-width: 900px) {
+      --messenger-userlist-width: 60px;
+      --messenger-userlist-padding: 50px 10px;
+      --messenger-userlist-list-padding: 20px 5px;
+   }
+   
+   @media screen and (max-width: 500px) {
+      --messenger-userlist-width: 50px;
+      --messenger-userlist-padding: 50px 0;
+      --messenger-userlist-list-padding: 20px 4px;
+      --messenger-item-hrcolor: rgba(81, 111, 145, 0.2);
+      --messenger-item-padding: 5px 0;
+   }
+}
+
+.messenger{
+   width: 100%;
+   height: var(--app-base-height);
+   display: flex;
+   
+   @media screen and (max-width: 500px) {
+      flex-flow: row-reverse;
+   }
+
+   &__chatbox{
+      width: calc(100% - var(--messenger-userlist-width));
+   }
+
+   &__listuser{
+      width: var(--messenger-userlist-width); 
+      box-sizing: border-box;
+
+      &__list{
+         display: flex;
+         align-items: center;
+         background-color: var(--searchbox-color);
+         flex-flow: column;
+         list-style: none;
+         margin: 0;
+         padding: var(--messenger-userlist-list-padding) !important;
+         height: 100%;
+         box-sizing: border-box;
+
+         overflow: hidden;
+         box-shadow: 0px 20.2109px 40.4219px -6.73698px var(--messenger-userlist-boxshadow);
+
+         & > div{
+            width: 100%;
+
+            &.ant-spin-nested-loading div.ant-list-empty-text{
+               zoom: 1;
+
+               @media screen and (max-width: 1000px) and (min-width: 500px) {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  zoom: 0.7;
+               }
+            }
+         }
+
+         &__item {
+            width: 100%;
+            padding: var(--messenger-item-padding) !important;
+            border-color: var(--messenger-item-hrcolor) !important;
+
+            & > a{
+               width: 100%;
+               height: 45px;
+               text-decoration: none;
+               color: var(--messenger-text-color);
+               font-family: var(--app-font);
+               font-weight: 600;
+               box-sizing: border-box;
+               padding: 5px 10px;
+               border-radius: 10px;
+               
+               display: flex;
+               align-items: center;
+               gap: 10px;
+               
+               &.item{
+                  border: 1px solid gray;
+                  border-top-width: 0;
+                  border-left-width: 0;
+                  border-right-width: 0;
+               }
+
+               & > div[type=zoomdata]{
+                  display: flex;
+                  flex-direction: column;
+                  max-height: 100%;
+                  width: 70%;
+
+                  & > div:nth-child(1) {
+                     width: 100%;
+                     overflow: hidden;
+                     text-overflow: ellipsis;
+                     white-space: nowrap;
+                  }
+
+                  & > div:nth-child(2) {
+                     width: 100%;
+                     font-size: 0.6em;
+                     overflow: hidden;
+                     text-overflow: ellipsis;
+                     white-space: nowrap;
+                  }
+               }
+
+               @media screen and (max-width: 900px) and (min-width: 501px){
+                  justify-content: center;
+                  & > div[type=zoomdata]{
+                     display: none;
+                  }
+               }
+               @media screen and (max-width: 500px){
+                  height: 40px;
+                  padding-left: 20px;
+                  gap: 20px;
+               }
+
+            }
+
+            &.active > a{
+               background-color: var(--messenger-active-zoom);
+            }
+
+            &:not(.active):hover > a{
+               background-color: var(--messenger-hove-zoom);
+            }
+         }
+      }
+   }
+}

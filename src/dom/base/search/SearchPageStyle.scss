@@ -1,0 +1,64 @@
+
+:root{
+   --search-base-padding: 20px 30px;
+   --search-page-padding: 20px 30px;
+   --search-page-boxhadow: rgba(0, 0, 0, 0.1);
+   --search-page-button-color: rgba(0, 0, 0, 0.5);
+   
+
+
+   @media screen and (max-width: 500px) {
+      --search-base-padding: 0px;
+      --search-page-padding: 10px 10px;
+   }
+
+   &.dark{
+      --search-page-boxhadow: rgba(255, 255, 255, 0.1);
+      --search-page-button-color: rgba(255, 255, 255, 0.5);
+   }
+}
+
+.search-base{
+   min-height: var(--app-base-height);
+   padding: var(--search-base-padding);
+   display: flex;
+
+}
+
+.search-page{
+   width: 100%;
+   height: min-content;
+   padding: var(--search-page-padding);
+   background-color: var(--topbar-bg-color);
+   border-radius: 10px;
+   box-shadow: 0 0 10px var(--search-page-boxhadow);
+
+   @media screen and (max-width: 500px) {
+      border-radius: 0;
+      background-color: var(--app-bgcolor);
+   }
+
+   &__item{
+      font-family: var(--app-font);
+
+
+      &-title{
+         display: flex;
+         justify-content: space-between;
+         & > div > a{
+            font-weight: 700;
+            font-size: calc(var(--app-fontsize) - 4px);
+            color: var(--app-text-color);
+         }
+
+         & > div > button{
+            color: var(--search-page-button-color);
+         }
+
+      }
+   }
+}
+
+/* li.ant-list-item.search-page__item{
+   padding: 10px 20px;
+} */

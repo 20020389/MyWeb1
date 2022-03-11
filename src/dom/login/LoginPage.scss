@@ -1,0 +1,457 @@
+
+
+$login-grid-size--A: 30% 24% 46%;
+$login-grid-size--B: 40% 60%;
+$login-grid-size--C: 100%;
+
+
+@mixin login-grid($value) {
+   grid-template-columns: $value;
+}
+
+:root {
+   --page-size: 30px;
+   --form-size: 16px;
+   --button-size: 14px;
+}
+
+html{
+   background-color: #f6f6f6;
+}
+
+.lb {
+   background-color: #f6f6f6;
+   height: 100vh;
+   width: 100%;
+   display: grid;
+   @include login-grid($login-grid-size--A);
+   box-sizing: border-box;
+   padding-top: 200px;
+   overflow-x: hidden;
+
+
+   &__label {
+      display: flex;
+      justify-content: flex-end;
+
+      box-sizing: border-box;
+      padding: {
+         left: 30px;
+      }
+   }
+
+   &__label__base {
+      position: relative;
+      width: 250px;
+      height: min-content;
+      font-family: "Poppins", sans-serif;
+      font-size: var(--page-size);
+      z-index: 2;
+   }
+
+   &__label__base::before {
+      position: absolute;
+      content: "";
+      width: 300px;
+      height: 100%;
+      background-color: rgb(127, 236, 255);
+      z-index: -1;
+      opacity: 0.25;
+      padding: 20px;
+      filter: blur(50px);
+      top: -50px;
+      left: -20px;
+      border-radius: 200px;
+      pointer-events: none;
+   }
+
+   &__label__base > h3 {
+      font-weight: 700;
+      line-height: 40px;
+   }
+
+   &__label__base > div {
+      font-size: 0.52em;
+      padding-top: 35px;
+      line-height: 25px;
+      font-weight: 500;
+      & a {
+         text-decoration: none;
+         color: #4461f2;
+         font-weight: 600;
+      }
+   }
+
+   &__label__base__logo {
+      font-family: "Mochiy Pop P One", sans-serif;
+      font-size: 1.1em;
+   }
+
+   &__label__base__logo > span {
+      color: #d62f60;
+   }
+
+   &__bg {
+      display: flex;
+      align-items: flex-end;
+      box-sizing: border-box;
+      padding-bottom: 100px;
+      & > img {
+         width: 350px;
+         height: min-content;
+         object: {
+            fit: cover;
+            position: center;
+         }
+      }
+   }
+   
+   &__form-bs {
+      margin-top: -20px;
+      
+      & > div {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         position: relative;
+      }
+   }
+
+   &__form {
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      min-height: 400px;
+      width: 350px;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-end;
+      font-family: "Poppins", sans-serif;
+      font-size: var(--form-size);
+      gap: 15px;
+      transition-duration: 1s;
+
+      &__error-log{
+         width: 100%;
+         min-height: calc(var(--form-size) + 7px);
+         display: flex;
+         justify-content: flex-start;
+         box-sizing: border-box;
+         padding-left: 5px;
+         color: red;
+         opacity: 0;
+
+         &.show{
+            opacity: 1;
+            &.animation{
+               animation: showError 0.75s;
+            }
+         }
+      }
+
+      &__input {
+         width: 100%;
+         position: relative;
+         border-radius: 7px;
+         overflow: hidden;
+
+         & > input {
+            width: 100%;
+            background-color: #eaf0f7;
+            border: none;
+            outline: none !important;
+            padding: 10px 20px;
+            transition: 0.5s;
+
+            &:focus ~ div {
+               box-shadow: 0 -2px #4461f2 inset;
+               width: calc(100%);
+            }
+            &:not(:placeholder-shown) ~ div {
+               box-shadow: 0 -2px #4461f2 inset;
+               width: calc(100%);
+            }
+
+            &:not(:placeholder-shown) ~ button{
+               opacity: 1;
+            }
+         }
+
+         &.disable{
+            pointer-events: none;
+         }
+
+         &.disable > input{
+            background-color: initial;
+            opacity: 0;
+
+         }
+
+         & > input[placeholder*="Password"][type="text"] {
+            padding-right: 50px;
+         }
+
+         & > button{
+            background-color: transparent;
+            border-width: 0;
+            max-width: calc(var(--form-size) + 20px);
+            max-height: calc(var(--form-size) + 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: absolute;
+            font-size: var(--form-size);
+            top: calc(50% - calc(var(--form-size) + 20px) / 2);
+            right: 10px;
+            outline: none !important;
+            transition: 0.5s;
+            opacity: 0;
+            & > ion-icon{
+               pointer-events: none;
+            }
+         }
+
+         &.error > div {
+            box-shadow: 0 -2px red inset !important;
+            width: calc(100%);
+         }
+
+         & > div {
+            width: 0;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0px;
+            pointer-events: none;
+            transition: width 0.3s;
+         }
+      }
+
+      & > a {
+         text-decoration: none;
+         color: rgba(0, 0, 0, 0.3);
+      }
+
+      & > button {
+         width: 100%;
+         border: none;
+         border-radius: 7px;
+         padding: 10px 0;
+         margin-top: 5px;
+         background-color: #4461f2;
+         color: white;
+         box-shadow: 0 10px 20px rgba(68, 97, 242, 0.4);
+      }
+
+      &__ocw {
+         margin-top: 40px;
+         width: 100%;
+         height: 2px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+
+         & > span {
+            background-color: #f6f6f6;
+            padding: 0 10px;
+            color: rgba(0, 0, 0, 0.2);
+         }
+      }
+
+      &__link {
+         width: 100%;
+         display: flex;
+         justify-content: space-between;
+         margin-top: 20px;
+      }
+
+      &__link > button {
+         border: none;
+         width: 100px;
+         height: 50px;
+         border-radius: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         box-sizing: border-box;
+         background-color: initial;
+         border: 1px solid rgba(0, 0, 0, 0.1);
+         font-size: 20px;
+
+         & > a {
+            text-decoration: none;
+            color: unset;
+            max-height: 25px;
+         }
+      }
+
+      &__link > button:nth-of-type(2) {
+         border: none;
+         background-color: white;
+         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      }
+   }
+
+   &__button {
+      position: absolute;
+      width: 100%;
+      top: 30px;
+      left: 0;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      padding-right: calc(16%);
+      font-family: "Poppins", sans-serif;
+      font-size: var(--button-size);
+
+      &__btn {
+         position: relative;
+         border: none;
+         color: #4461f2;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+         border-radius: 20px;
+         padding: 7px 20px;
+         transition-property: width, box-shadow;
+         transition-delay: 0s, 0.5s;
+         transition-duration: 0.5s, 0.5s;
+         overflow: hidden;
+         background-color: transparent;
+
+         & > span{
+            position: relative;
+            pointer-events: none;
+         }
+
+         &::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.7s;
+            pointer-events: none;
+         }
+
+         &::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 4px;
+            left: 35%;
+            bottom: 0;
+            background-color: #4461f2;
+            border-radius: 2px;
+            transition: 0.5s;
+            transition-delay: 0.1s;
+            pointer-events: none;
+         }
+
+         &.active {
+            box-shadow: unset;
+            transition-delay: 0s, 0s;
+            &::after {
+               width: 30%;
+            }
+
+            &::before{
+               width: 0;
+            }
+         }
+      }
+   }
+
+   @media screen and (max-width: 1000px) {
+      @include login-grid($login-grid-size--B);
+
+      &__bg {
+         display: none;
+      }
+   }
+
+   @media screen and (max-width: 600px) {
+      display: flex;
+      box-sizing: border-box;
+      padding: 0 10px;
+      flex-flow: column;
+      gap: 50px;
+      width: 100%;
+      &__label {
+         justify-content: center;
+         &__base {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            & > div {
+               display: none;
+            }
+         }
+      }
+      &__form {
+         width: 100%;
+         &__link {
+            gap: 3px;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 520px) {
+   :root {
+      --page-size: 20px;
+      --form-size: 13px;
+      --button-size: 12px;
+   }
+}
+
+
+// -------------------------- animation --------------------------------- //
+@keyframes hideForm {
+   0%{
+      transform: translateX(0px);
+   }
+   40%{
+      transform: translateX(300px);
+   }
+}
+
+@keyframes showForm {
+   30%{
+      transform: translateX(300px);
+   }
+   70%{
+      transform: translateX(-20px);
+   }
+   100%{
+      transform: translateX(0);
+   }
+}
+
+@keyframes showError {
+   0%{
+      transform: translateX(0px);
+   }
+   20%{
+      transform: translateX(20px);
+   }
+   40%{
+      transform: translateX(-20px);
+   }
+   60%{
+      transform: translateX(10px);
+   }
+   80%{
+      transform: translateX(-10px);
+   }
+   100%{
+      transform: translateX(0px);
+   }
+}

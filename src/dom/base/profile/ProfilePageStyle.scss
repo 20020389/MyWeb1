@@ -1,0 +1,103 @@
+:root {
+   --profile-edit-bgcolor: rgba(39, 76, 119, 0.7);
+   --profile-edit-color: white;
+}
+
+.profile-base {
+   color: var(--app-text-color);
+   position: relative;
+   height: var(--app-base-height);
+   font-family: var(--app-font);
+
+   & > header {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 10px;
+
+      padding-top: 100px;
+
+      & > h4 {
+         font-weight: 700;
+         color: var(--app-text-color);
+      }
+   }
+}
+
+@keyframes showProfileEdit {
+   0%{
+      bottom: 20px;
+      right: 30px;
+      width: 0;
+      height: 0;
+      border-radius: 100%;
+   }
+   100%{
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;  
+      border-radius: 0;
+   }
+}
+
+.profile-edit {
+   position: fixed;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 10;
+   overflow: hidden;
+
+   &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(128, 128, 128, 0.3);
+
+      position: absolute;
+      left: 0;
+      top: 0;
+   }
+
+   &__btn {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      background-color: var(--profile-edit-bgcolor);
+      color: var(--profile-edit-color);
+      border-radius: 10px;
+      padding: 7px 12px;
+      box-sizing: content-box;
+
+      display: flex;
+      gap: 5px;
+
+      & > span {
+         font-weight: 500;
+
+         @media screen and (max-width: 500px) {
+            display: none;
+         }
+      }
+   }
+}
+
+.profile-form {
+   width: min(800px, 100%);
+   height: 80%;
+   background-color: white;
+
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   border-radius: 15px;
+
+   z-index: 1;
+
+   @media screen and (max-width: 800px) {
+      height: 100%;
+   }
+}

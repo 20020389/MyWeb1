@@ -1,0 +1,32 @@
+:root{
+   --checkbox-checked-bgcolor: #516f91;
+   --checkbox-unchecked-bgcolor: #a5b3c7;
+   --checkbox-thumb-bg: url('http://localhost:3001/icon/slidercustom/thumb.svg');
+}
+
+:root.dark{
+   --checkbox-checked-bgcolor: white;
+   --checkbox-unchecked-bgcolor: gray;
+   --checkbox-thumb-bg: url('http://localhost:3001/icon/slidercustom/thumbdark.svg');
+}
+
+.checkbox__slider{
+
+   & > input[type=checkbox] {
+      -webkit-appearance: none;
+      width: 50px;
+      height: 25px;
+      border-radius: 1000px;
+      background-color: var(--checkbox-unchecked-bgcolor);
+      background-image: var(--checkbox-thumb-bg);
+      background-position: left;
+      background-repeat: no-repeat;
+      transition: .3s;
+      cursor: pointer;
+      
+      &:checked{
+         background-color: var(--checkbox-checked-bgcolor);
+         background-position: right;
+      }
+   }
+}
