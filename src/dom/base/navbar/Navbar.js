@@ -318,7 +318,7 @@ export default function Navbar(props) {
                >
                   <div>
                      <div>
-                        <ion-icon src="/icon/profile.svg" />
+                        <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/profile.svg`} />
                      </div>
                      <span>Profile</span>
                   </div>
@@ -334,7 +334,7 @@ export default function Navbar(props) {
                >
                   <div>
                      <div>
-                        <ion-icon src="/icon/friend.svg" />
+                        <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/friend.svg`} />
                      </div>
                      <span>Friend</span>
                   </div>
@@ -380,7 +380,7 @@ export default function Navbar(props) {
                >
                   <div>
                      <div>
-                        <ion-icon src="/icon/question.svg" />
+                        <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/question.svg`} />
                      </div>
                      <span>About</span>
                   </div>
@@ -397,7 +397,7 @@ export default function Navbar(props) {
             >
                <div>
                   <div>
-                     <ion-icon src="/icon/logout.svg" />
+                     <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/logout.svg`} />
                   </div>
                   <span>Logout</span>
                </div>

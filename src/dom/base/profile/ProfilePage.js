@@ -68,7 +68,7 @@ const ProfilePage = ({ user = { uid: undefined } }) => {
                         }}
                         className="bt profile-edit__btn"
                      >
-                        <ion-icon src="/icon/pen.svg" />
+                        <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/pen.svg`} />
                         <span>Edit Profile</span>
                      </button>
                      <AnimatePresence>

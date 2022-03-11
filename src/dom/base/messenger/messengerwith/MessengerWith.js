@@ -64,7 +64,7 @@ function getEmoticon(emoticon, current, mobilemode) {
                   key="avatar-seen"
                   width={mobilemode ? 15 : 20}
                   height={mobilemode ? 15 : 20}
-                  src="/icon/emoticon/1.png"
+                  src={`${process.env.REACT_APP_SERVER}/icon/emoticon/1.png`}
                   strokeWidth={1.5}
                   style={{
                      transform: "scale(0.8)",
@@ -83,7 +83,7 @@ function getEmoticon(emoticon, current, mobilemode) {
                   key="avatar-seen"
                   width={mobilemode ? 15 : 20}
                   height={mobilemode ? 15 : 20}
-                  src="/icon/emoticon/2.png"
+                  src={`${process.env.REACT_APP_SERVER}/icon/emoticon/2.png`}
                   strokeWidth={1.5}
                />
             </motion.span>
@@ -97,7 +97,7 @@ function getEmoticon(emoticon, current, mobilemode) {
                   key="avatar-seen"
                   width={mobilemode ? 15 : 20}
                   height={mobilemode ? 15 : 20}
-                  src="/icon/emoticon/3.png"
+                  src={`${process.env.REACT_APP_SERVER}/icon/emoticon/3.png`}
                   strokeWidth={1.5}
                />
             </motion.span>
@@ -111,7 +111,7 @@ function getEmoticon(emoticon, current, mobilemode) {
                   key="avatar-seen"
                   width={mobilemode ? 15 : 20}
                   height={mobilemode ? 15 : 20}
-                  src="/icon/emoticon/4.png"
+                  src={`${process.env.REACT_APP_SERVER}/icon/emoticon/4.png`}
                   strokeWidth={1.5}
                />
             </motion.span>
@@ -125,7 +125,7 @@ function getEmoticon(emoticon, current, mobilemode) {
                   key="avatar-seen"
                   width={mobilemode ? 15 : 20}
                   height={mobilemode ? 15 : 20}
-                  src="/icon/emoticon/5.png"
+                  src={`${process.env.REACT_APP_SERVER}/icon/emoticon/5.png`}
                   strokeWidth={1.5}
                />
             </motion.span>
@@ -139,7 +139,7 @@ function getEmoticon(emoticon, current, mobilemode) {
                   key="avatar-seen"
                   width={mobilemode ? 15 : 20}
                   height={mobilemode ? 15 : 20}
-                  src="/icon/emoticon/6.png"
+                  src={`${process.env.REACT_APP_SERVER}/icon/emoticon/6.png`}
                   strokeWidth={1.5}
                />
             </motion.span>
@@ -303,7 +303,7 @@ export default function MessengerWith({
                transition: { duration: 0.3, type: "tween", ease: "easeOut" },
             }}
          >
-            <img src="/icon/emoticon/1.png" alt="" />
+            <img src={`${process.env.REACT_APP_SERVER}/icon/emoticon/1.png`} alt="" />
          </motion.li>
          <motion.li
             className="bt"
@@ -333,7 +333,7 @@ export default function MessengerWith({
                transition: { duration: 0.3, type: "tween", ease: "easeOut" },
             }}
          >
-            <img src="/icon/emoticon/2.png" alt="" />
+            <img src={`${process.env.REACT_APP_SERVER}/icon/emoticon/2.png`} alt="" />
          </motion.li>
          <motion.li
             className="bt"
@@ -361,7 +361,7 @@ export default function MessengerWith({
                transition: { duration: 0.3, type: "tween", ease: "easeOut" },
             }}
          >
-            <img src="/icon/emoticon/3.png" alt="" />
+            <img src={`${process.env.REACT_APP_SERVER}/icon/emoticon/3.png`} alt="" />
          </motion.li>
          <motion.li
             className="bt"
@@ -389,7 +389,7 @@ export default function MessengerWith({
                transition: { duration: 0.3, type: "tween", ease: "easeOut" },
             }}
          >
-            <img src="/icon/emoticon/4.png" alt="" />
+            <img src={`${process.env.REACT_APP_SERVER}/icon/emoticon/4.png`} alt="" />
          </motion.li>
          <motion.li
             className="bt"
@@ -417,7 +417,7 @@ export default function MessengerWith({
                transition: { duration: 0.3, type: "tween", ease: "easeOut" },
             }}
          >
-            <img src="/icon/emoticon/5.png" alt="" />
+            <img src={`${process.env.REACT_APP_SERVER}/icon/emoticon/5.png`} alt="" />
          </motion.li>
          <motion.li
             className="bt"
@@ -445,7 +445,7 @@ export default function MessengerWith({
                transition: { duration: 0.3, type: "tween", ease: "easeOut" },
             }}
          >
-            <img src="/icon/emoticon/6.png" alt="" />
+            <img src={`${process.env.REACT_APP_SERVER}/icon/emoticon/6.png`} alt="" />
          </motion.li>
       </motion.ul>
    );
@@ -511,7 +511,7 @@ export default function MessengerWith({
                                 }
                              }}
                           >
-                             <ion-icon src="/icon/showemoji.svg" />
+                             <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/showemoji.svg`} />
                              {renderIcon(list, item)}
                           </button>
                        ) : null}
@@ -591,7 +591,7 @@ export default function MessengerWith({
                                 }
                              }}
                           >
-                             <ion-icon src="/icon/showemoji.svg" />
+                             <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/showemoji.svg`} />
                              {renderIcon(list, item)}
                           </button>
                        ) : null}
@@ -647,7 +647,7 @@ export default function MessengerWith({
                        <div className="message__image">
                           <Image
                              preview={false}
-                             src={item.link}
+                             src={process.env.REACT_APP_SERVER + item.link}
                              width={mobilemode ? 70 : 100}
                              height={mobilemode ? 70 : 100}
                           />
@@ -676,7 +676,7 @@ export default function MessengerWith({
                                 }
                              }}
                           >
-                             <ion-icon src="/icon/showemoji.svg" />
+                             <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/showemoji.svg`} />
                              {renderIcon(list, item)}
                           </button>
                        ) : null}
@@ -1033,7 +1033,7 @@ export default function MessengerWith({
                ></textarea>
             </div>
             <button className="zoomchat__form__emoji">
-               <ion-icon src="/icon/showemoji.svg" />
+               <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/showemoji.svg`} />
                <div>
                   <div id="emojilist"></div>
                </div>

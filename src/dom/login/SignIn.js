@@ -146,7 +146,7 @@ const SignIn = ({ style, initial, exit, animate, transition }) => {
             <div className="lb__form__link">
                <button type="button">
                   <Link to="">
-                     <ion-icon src="/icon/google_icon.svg"></ion-icon>
+                     <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/google_icon.svg`}></ion-icon>
                   </Link>
                </button>
                <button type="button">
@@ -156,7 +156,7 @@ const SignIn = ({ style, initial, exit, animate, transition }) => {
                </button>
                <button type="button">
                   <Link to="">
-                     <ion-icon src="/icon/facebook_icon.svg"></ion-icon>
+                     <ion-icon src={`${process.env.REACT_APP_SERVER}/icon/facebook_icon.svg`}></ion-icon>
                   </Link>
                </button>
             </div>
