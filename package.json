@@ -2,7 +2,7 @@
    "name": "client",
    "version": "0.1.0",
    "private": true,
-   "homepage": "https://20020389.github.io/MyWeb1/",
+   "homepage": "https://20020389.github.io/",
    "dependencies": {
       "@ant-design/icons": "^4.7.0",
       "@testing-library/jest-dom": "^5.16.1",
