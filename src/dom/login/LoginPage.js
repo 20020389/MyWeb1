@@ -66,7 +66,7 @@ export default function LoginPage(props) {
                </div>
             </div>
             <div className="lb__bg">
-               <img src="/bg1.png" alt="" />
+               <img src={`${process.env.REACT_APP_SERVER}/bg1.png`} alt="" />
             </div>
             <div className="lb__form-bs">
                <AnimatePresence>

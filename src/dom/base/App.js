@@ -80,7 +80,7 @@ export default function App({ user }) {
          });
       const sendOnline = setInterval(() => {
          axios
-            .post("/user/setonline", {
+            .post(`${process.env.REACT_APP_SERVER}/user/setonline`, {
                useruid: user.uid,
                online: online,
             })
